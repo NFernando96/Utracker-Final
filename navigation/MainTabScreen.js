@@ -7,11 +7,14 @@ import {createStackNavigator} from "@react-navigation/stack";
 
 import HomeScreen from "../screens/bottomTab/home/homeScreen";
 import LocationScreen from "../screens/bottomTab/loacation/locationScreen";
+import  DeviceScreen from "../screens/bottomTab/device/deviceScreen";
+import ReportScreen from "../screens/bottomTab/reports/reportsScreen";
 //import ExploreScreen from "../screens/ExploreScreen";
 
 const HomeStack = createStackNavigator();
 const LocationStack = createStackNavigator();
-
+const DeviceStack = createStackNavigator();
+const ReportStack = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -56,6 +59,39 @@ const LocationStackScreen = ({navigation}) =>(
 );
 
 
+const DeviceStackScreen = ({navigation}) =>(
+    <DeviceStack.Navigator screenOptions={{
+        headerStyle:{
+            backgroundColor:'#009387',
+        },
+        headerTintColor:'#fff',
+        headerTitleStyle:{
+            fontWeight:'bold'
+        }
+    }}>
+        <DeviceStack.Screen name="Device" component={DeviceScreen} option={{
+        }}/>
+    </DeviceStack.Navigator>
+);
+
+
+const ReportStackScreen = ({navigation}) =>(
+    <ReportStack.Navigator screenOptions={{
+        headerStyle:{
+            backgroundColor:'#009387',
+        },
+        headerTintColor:'#fff',
+        headerTitleStyle:{
+            fontWeight:'bold'
+        }
+    }}>
+        <ReportStack.Screen name="Device" component={ReportScreen} option={{
+        }}/>
+    </ReportStack.Navigator>
+);
+
+
+
 
 const MainTabScreen =() => {
     return (
@@ -80,12 +116,40 @@ const MainTabScreen =() => {
                 component={LocationStackScreen}
                 options={{
                     tabBarLabel: 'Location',
-                    tabBarColor:'#694fad',
+                    tabBarColor:'#009387',
+                    tabBarIcon: ({ color }) => (
+                        <Icon name="ios-notifications" color={color} size={26} />//26
+                    ),
+                }}
+            />
+
+            <Tab.Screen
+                name="Device"
+                component={DeviceStackScreen}
+                options={{
+                    tabBarLabel: 'Device',
+                    tabBarColor:'#009387',
                     tabBarIcon: ({ color }) => (
                         <Icon name="ios-notifications" color={color} size={26} />
                     ),
                 }}
             />
+
+
+            <Tab.Screen
+                name="Report"
+                component={ReportStackScreen}
+                options={{
+                    tabBarLabel: 'Report',
+                    tabBarColor:'#009387',
+                    tabBarIcon: ({ color }) => (
+                        <Icon name="ios-notifications" color={color} size={26} />
+                    ),
+                }}
+            />
+
+
+
         </Tab.Navigator>
     );
 }
