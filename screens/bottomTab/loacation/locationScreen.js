@@ -10,31 +10,23 @@ const PreviousLocationStack = createStackNavigator();
 
 //const Stack = createStackNavigator();
 
-// const PreviousLocationStackScreen = ({navigation}) =>(
-//     <PreviousLocationStack.Navigator screenOptions={{
-//         headerStyle:{
-//             backgroundColor:'#009387',
-//         },
-//         headerTintColor:'#fff',
-//         headerTitleStyle:{
-//             fontWeight:'bold'
-//         }
-//     }}>
-//         <PreviousLocationStack.Screen name="Previous" component={PreviousLocationScreen} option={{
-//         }}/>
-//     </PreviousLocationStack.Navigator>
-// );
+
 
 
 
 
 const LocationScreen=({navigation})=> {
+
+
+
+
     return (
-        <View style={styles.container}>
-            <Text>This is location Main screen</Text>
+        <View  style={styles.container} >
+            <Text style={styles.text}>This is location screen</Text>
             {/*<Button title="Previous Location" onPress={()=> navigation.goBack(")}/>*/}
-            <Button title="Previous Location" onPress={()=> {navigation.push('previous-location')}}/>
-            <Button title="Previous Path" onPress={()=> navigation.navigate('Details')}/>
+
+            <Button title="Previous Location" onPress={()=> {navigation.navigate('Previous-Location')}}/>
+            <Button title="Previous Path" onPress={()=> navigation.navigate('Previous-path')}/>
         </View>
 
         // <NavigationContainer>
@@ -57,7 +49,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+
     },
+    text:{
+        fontSize:30,
+    }
 });
 
 

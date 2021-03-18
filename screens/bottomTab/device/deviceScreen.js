@@ -1,14 +1,26 @@
-import React from 'react'
-import { StyleSheet, Text, View} from "react-native";
+import React,{useState} from 'react'
+import {Button, StyleSheet, Text, View,TextInput} from "react-native";
+
 //import styles from "";
 
 
 
 
 const DeviceScreen=({navigation})=> {
+    const [text, setText] = useState('');
+
     return (
         <View style={styles.container}>
-            <Text>Device Screen</Text>
+            <Text style={styles.text}> This is Device Screen</Text>
+            <TextInput
+                style={{height: 40}}
+                placeholder="Type here to translate!"
+                onChangeText={text => setText(text)}
+                defaultValue={text}
+            />
+            {/*<Button title="View Device"></Button>*/}
+            {/*<Button title="Add Device"></Button>*/}
+            {/*<Button title="Remove Device"></Button>*/}
         </View>
     );
 }
@@ -21,6 +33,9 @@ const DeviceScreen=({navigation})=> {
          alignItems: 'center',
         justifyContent: 'center',
      },
+     text:{
+         fontSize:30,
+     }
  });
 
 

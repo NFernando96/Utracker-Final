@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text} from "react-native-web";
+import {View, Text} from "react-native";
 
-const PreviousPathScreen = () =>{
+const PreviousPathScreen = ({navigation}) =>{
     return(
         <View>
             <Text>This is PreviousPathScreen page</Text>

@@ -9,6 +9,8 @@ import HomeScreen from "../screens/bottomTab/home/homeScreen";
 import LocationScreen from "../screens/bottomTab/loacation/locationScreen";
 import  DeviceScreen from "../screens/bottomTab/device/deviceScreen";
 import ReportScreen from "../screens/bottomTab/reports/reportsScreen";
+import PreviousLocationScreen from "../screens/bottomTab/loacation/previousLocation/previousLocationScreen";
+import DrawerContent from "./DrawerContent"
 //import ExploreScreen from "../screens/ExploreScreen";
 
 const HomeStack = createStackNavigator();
@@ -53,10 +55,20 @@ const LocationStackScreen = ({navigation}) =>(
             fontWeight:'bold'
         }
     }}>
-        <LocationStack.Screen name="Location" component={LocationScreen} option={{
+        <LocationStack.Screen name="Location" component={LocationScreen} options={{
+            title:'Location',
+            headerLeft:() => (
+                <Icon.Button name="ios-menu"
+                             size={25}
+                             backgroundColor ="#009387"
+                             onPress={() =>navigation.openDrawer()}>
+                </Icon.Button>
+            )
         }}/>
     </LocationStack.Navigator>
 );
+////////////////////////////////////
+
 
 
 const DeviceStackScreen = ({navigation}) =>(
@@ -69,7 +81,15 @@ const DeviceStackScreen = ({navigation}) =>(
             fontWeight:'bold'
         }
     }}>
-        <DeviceStack.Screen name="Device" component={DeviceScreen} option={{
+        <DeviceStack.Screen name="Setting" component={DeviceScreen} options={{
+            title:'Device',
+            headerLeft:() => (
+                <Icon.Button name="ios-menu"
+                             size={25}
+                             backgroundColor ="#009387"
+                             onPress={() =>navigation.openDrawer()}>
+                </Icon.Button>
+            )
         }}/>
     </DeviceStack.Navigator>
 );
@@ -85,7 +105,15 @@ const ReportStackScreen = ({navigation}) =>(
             fontWeight:'bold'
         }
     }}>
-        <ReportStack.Screen name="Device" component={ReportScreen} option={{
+        <ReportStack.Screen name="Report" component={ReportScreen} options={{
+            title:'Report',
+            headerLeft:() => (
+                <Icon.Button name="ios-menu"
+                             size={25}
+                             backgroundColor ="#009387"
+                             onPress={() =>navigation.openDrawer()}>
+                </Icon.Button>
+            )
         }}/>
     </ReportStack.Navigator>
 );
@@ -95,10 +123,10 @@ const ReportStackScreen = ({navigation}) =>(
 
 const MainTabScreen =() => {
     return (
-        <Tab.Navigator
-            initialRouteName="Home"
-            activeColor="#fff"
-            barStyle={{ backgroundColor: '#009387' }}
+        <Tab.Navigator drawerContent={(props) => <DrawerContent {...props} />}
+            // initialRouteName="Home"
+            // activeColor="#fff"
+            // barStyle={{ backgroundColor: '#009387' }}
         >
             <Tab.Screen
                 name="Home"
@@ -118,7 +146,7 @@ const MainTabScreen =() => {
                     tabBarLabel: 'Location',
                     tabBarColor:'#009387',
                     tabBarIcon: ({ color }) => (
-                        <Icon name="ios-notifications" color={color} size={26} />//26
+                        <Icon name="md-location-sharp" color={color} size={26} />//26
                     ),
                 }}
             />
@@ -127,10 +155,10 @@ const MainTabScreen =() => {
                 name="Device"
                 component={DeviceStackScreen}
                 options={{
-                    tabBarLabel: 'Device',
+                    tabBarLabel: 'Setting',
                     tabBarColor:'#009387',
                     tabBarIcon: ({ color }) => (
-                        <Icon name="ios-notifications" color={color} size={26} />
+                        <Icon name="md-settings" color={color} size={26} />
                     ),
                 }}
             />
@@ -143,7 +171,7 @@ const MainTabScreen =() => {
                     tabBarLabel: 'Report',
                     tabBarColor:'#009387',
                     tabBarIcon: ({ color }) => (
-                        <Icon name="ios-notifications" color={color} size={26} />
+                        <Icon name="md-reader" color={color} size={26} />
                     ),
                 }}
             />
