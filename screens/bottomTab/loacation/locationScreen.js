@@ -1,5 +1,6 @@
 import React from 'react'
-import {Button, StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
+import {Button} from 'react-native-paper';
 import PreviousLocationScreen from "./previousLocation/previousLocationScreen";
 
 import {createStackNavigator} from "@react-navigation/stack";
@@ -22,11 +23,29 @@ const LocationScreen=({navigation})=> {
 
     return (
         <View  style={styles.container} >
+            <View style={styles.button}>
             <Text style={styles.text}>This is location screen</Text>
-            {/*<Button title="Previous Location" onPress={()=> navigation.goBack(")}/>*/}
+            </View>
 
-            <Button title="Previous Location" onPress={()=> {navigation.navigate('Previous-Location')}}/>
-            <Button title="Previous Path" onPress={()=> navigation.navigate('Previous-path')}/>
+            <View style={styles.button}>
+            <Button
+                mode="contained"
+                icon="map-marker-multiple"
+                dark="true"
+                onPress={()=> {navigation.navigate('Previous-Location')}}
+            >
+                Previous Location</Button>
+            </View>
+
+            <View>
+            <Button
+                mode="contained"
+                icon="map-outline"
+                dark="true"
+                onPress={()=> navigation.navigate('Previous-path')}>
+                Previous Paths
+            </Button>
+            </View>
         </View>
 
         // <NavigationContainer>
@@ -46,13 +65,16 @@ const LocationScreen=({navigation})=> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#b3fff0',
         alignItems: 'center',
         justifyContent: 'center',
 
     },
     text:{
         fontSize:30,
+    },
+    button:{
+      marginBottom:30,
     }
 });
 
