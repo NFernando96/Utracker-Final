@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
-import {Button, StyleSheet, Text, View,TextInput} from "react-native";
-
+import { StyleSheet, Text, View,TextInput} from "react-native";
+import {Button} from 'react-native-paper';
 //import styles from "";
 
 
@@ -12,15 +12,28 @@ const DeviceScreen=({navigation})=> {
     return (
         <View style={styles.container}>
             <Text style={styles.text}> This is Device Screen</Text>
-            <TextInput
-                style={{height: 40}}
-                placeholder="Type here to translate!"
-                onChangeText={text => setText(text)}
-                defaultValue={text}
-            />
-            {/*<Button title="View Device"></Button>*/}
-            {/*<Button title="Add Device"></Button>*/}
-            {/*<Button title="Remove Device"></Button>*/}
+            {/*<TextInput*/}
+            {/*    style={{height: 40}}*/}
+            {/*    placeholder="Type here to translate!"*/}
+            {/*    onChangeText={text => setText(text)}*/}
+            {/*    defaultValue={text}*/}
+            {/*/>*/}
+            <Button
+                style={styles.button}
+                icon="shield-plus"
+                mode="contained"
+                dark="true"
+                onPress={()=> {navigation.navigate('View-device')}}>
+            View All Device</Button>
+
+            <Button
+                style={styles.button}
+                icon="shield-plus"
+                mode="contained"
+                dark="true"
+                onPress={()=> {navigation.navigate('Add-device')}}
+            >Add Device</Button>
+
         </View>
     );
 }
@@ -29,13 +42,16 @@ const DeviceScreen=({navigation})=> {
  const styles = StyleSheet.create({
      container: {
          flex: 1,
-         backgroundColor: '#fff',
+         backgroundColor: '#b3fff0',
          alignItems: 'center',
         justifyContent: 'center',
      },
      text:{
          fontSize:30,
-     }
+     },
+     button:{
+         marginBottom:30,
+     },
  });
 
 

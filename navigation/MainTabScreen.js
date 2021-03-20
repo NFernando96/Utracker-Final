@@ -81,7 +81,7 @@ const DeviceStackScreen = ({navigation}) =>(
             fontWeight:'bold'
         }
     }}>
-        <DeviceStack.Screen name="Setting" component={DeviceScreen} options={{
+        <DeviceStack.Screen name="Device" component={DeviceScreen} options={{
             title:'Device',
             headerLeft:() => (
                 <Icon.Button name="ios-menu"
@@ -155,7 +155,7 @@ const MainTabScreen =() => {
                 name="Device"
                 component={DeviceStackScreen}
                 options={{
-                    tabBarLabel: 'Setting',
+                    tabBarLabel: 'Device',
                     tabBarColor:'#009387',
                     tabBarIcon: ({ color }) => (
                         <Icon name="md-settings" color={color} size={26} />

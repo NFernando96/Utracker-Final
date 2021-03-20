@@ -11,10 +11,15 @@ import PreviousPathScreen from "../screens/bottomTab/loacation/previousPath/prev
 import DailyRunningReportScreen from "../screens/bottomTab/reports/dailyRunningReport/dailyRunningReportScreen";
 import MonthlyRunningReportScreen from "../screens/bottomTab/reports/monthlyRunningReport/monthlyRunningReportScreen";
 import WeeklyRunningReportScreen from "../screens/bottomTab/reports/weeklyRunningReport/weeklyRunningReportScreen";
+import ProfileScreen from "../screens/drawer/profile/profileScreen";
+
 
 import DrawerContent from "./DrawerContent"
 import {createStackNavigator} from "@react-navigation/stack";
 import MainTab from "./DrawerContent";
+import HomeScreen from "../screens/bottomTab/home/homeScreen";
+import ViewDeviceScreen from "../screens/bottomTab/device/viewDevice/viewDeviceScreen";
+import AddDeviceScreen from "../screens/bottomTab/device/addDevice/addDeviceScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -25,6 +30,10 @@ const PreviousPathStack = createStackNavigator();
 const DailyRunningReportStack = createStackNavigator();
 const MonthlyRunningReportStack = createStackNavigator();
 const WeeklyRunningReportStack = createStackNavigator();
+const ProfileStack = createStackNavigator();
+const ViewDeviceStack = createStackNavigator();
+const AddDeviceStack = createStackNavigator();
+
 
 const Stack = createStackNavigator();
 
@@ -198,6 +207,76 @@ const MonthlyRunningReportStackScreen = ({navigation}) =>(
         }}/>
     </MonthlyRunningReportStack.Navigator>
 );
+/////////////////////////////////////////////////////////////////////////
+
+const ProfileStackScreen = ({navigation}) =>(
+    <ProfileStack.Navigator screenOptions={{
+        headerStyle:{
+            backgroundColor:'#009387',
+        },
+        headerTintColor:'#fff',
+        headerTitleStyle:{
+            fontWeight:'bold'
+        }
+    }}>
+        <ProfileStack.Screen name="Profile" component={ProfileScreen} options={{
+            title:'Profile',
+            headerLeft:()=>(
+                <Icon.Button  name="arrow-back"
+                              size={25}
+                              backgroundColor ="#009387"
+                              onPress={()=>navigation.navigate('Home')}>
+                </Icon.Button>
+            )
+        }}/>
+    </ProfileStack.Navigator>
+);
+////////////////////////////////////////////////////////////////////////////////////////////
+const ViewDeviceStackScreen = ({navigation}) =>(
+    <ViewDeviceStack.Navigator screenOptions={{
+        headerStyle:{
+            backgroundColor:'#009387',
+        },
+        headerTintColor:'#fff',
+        headerTitleStyle:{
+            fontWeight:'bold'
+        }
+    }}>
+        <ViewDeviceStack.Screen name="View-device" component={ViewDeviceScreen} options={{
+            title:'View-device',
+            headerLeft:()=>(
+                <Icon.Button  name="arrow-back"
+                              size={25}
+                              backgroundColor ="#009387"
+                              onPress={()=>navigation.navigate('Device')}>
+                </Icon.Button>
+            )
+        }}/>
+    </ViewDeviceStack.Navigator>
+);
+
+const AddDeviceStackScreen = ({navigation}) =>(
+    <AddDeviceStack.Navigator screenOptions={{
+        headerStyle:{
+            backgroundColor:'#009387',
+        },
+        headerTintColor:'#fff',
+        headerTitleStyle:{
+            fontWeight:'bold'
+        }
+    }}>
+        <MonthlyRunningReportStack.Screen name="Add-device" component={AddDeviceScreen} options={{
+            title:'Add-device',
+            headerLeft:()=>(
+                <Icon.Button  name="arrow-back"
+                              size={25}
+                              backgroundColor ="#009387"
+                              onPress={()=>navigation.navigate('Device')}>
+                </Icon.Button>
+            )
+        }}/>
+    </AddDeviceStack.Navigator>
+);
 
 
 
@@ -212,8 +291,11 @@ const AppNavigation = () =>{
     return(
         <NavigationContainer>
             {/*<Drawer.Navigator initialRouteName="Home">*/}
+            {/*<Drawer.Navigator initialRouteName="Splash" component={SplashScreen}/>*/}
                 <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
                 <Drawer.Screen name="Home" component={MainTabScreen} />
+                <Drawer.Screen name="Profile" component={ProfileStackScreen} />
+
                 {/*<Drawer.Screen name="Details" component={DetailsStackScreen} />*/}
                 <Drawer.Screen name="About" component={AboutStackScreen} />
                 <Drawer.Screen name="Contact" component={ContactStackScreen} />
@@ -225,6 +307,8 @@ const AppNavigation = () =>{
                     <Drawer.Screen name="Weekly-running-report" component={WeeklyRunningReportStackScreen} />
                     <Drawer.Screen name="Monthly-running-report" component={MonthlyRunningReportStackScreen} />
 
+                    <Drawer.Screen name="View-device" component={ViewDeviceStackScreen} />
+                    <Drawer.Screen name="Add-device" component={AddDeviceStackScreen} />
                 {/*    <Stack.Screen name="previous-location" component={PreviousLocationScreen} />*/}
             </Drawer.Navigator>
         </NavigationContainer>
