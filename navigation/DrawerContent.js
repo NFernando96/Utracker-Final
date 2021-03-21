@@ -40,9 +40,6 @@ function DrawerContent1(props) {
                             }}
                         />
 
-
-
-
                         <DrawerItem
                             style={styles.homelabel}
                               icon={({ color, size }) => (
@@ -50,9 +47,10 @@ function DrawerContent1(props) {
                               )}
                             label="Profile"
                             onPress={() => {
-                                props.navigation.navigate("About");
+                                props.navigation.navigate("Profile");
                             }}
                         />
+
                         <DrawerItem
                             style={styles.homelabel}
                               icon={({ color, size }) => (

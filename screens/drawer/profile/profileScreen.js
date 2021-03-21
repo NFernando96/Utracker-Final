@@ -11,3 +11,5 @@ const Profile = ({navigation})=>{
         </View>
     );
 }
+
+export default Profile;
